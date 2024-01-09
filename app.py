@@ -74,16 +74,15 @@ def create_salary_scatter_plot(clustered_data):
     # Define the gray color for the legend markers
     gray_color = 'gray'
 
-
-    # Add custom entries to the legend for country colors
-    for country, color in color_map.items():
+    # Add custom entries to the legend for company size with gray markers
+    for size, marker in marker_mapping.items():
         fig.add_trace(go.Scatter(
             x=[None],
             y=[None],
             mode='markers',
-            marker=dict(color=color, size=10),
-            name=country,
-            legendgroup='country'
+            marker=dict(symbol=marker, size=10, color=gray_color),  # Set the marker color to gray
+            name=f"Company Size: {size_mapping[size]}",
+            legendgroup='size'
         ))
 
     # Update the layout to adjust the appearance
@@ -111,7 +110,7 @@ def main():
     st.set_page_config(layout="wide")
     # Define título y subtítulo
     title = "💼 Global Data Jobs"
-    subtitle = "Analyzing Salaries by Title and Company Size"
+    subtitle = "Analyzing Salaries by Country and Company Size"
 
     # Uso de marcado para título y subtítulo
     st.markdown(f"<h1 style='text-align: center;'>{title}</h1>", unsafe_allow_html=True)
@@ -132,4 +131,3 @@ def main():
     
 if __name__ == '__main__':
     main()
-    
