@@ -74,16 +74,6 @@ def create_salary_scatter_plot(clustered_data):
     # Define the gray color for the legend markers
     gray_color = 'gray'
 
-    # Add custom entries to the legend for company size with gray markers
-    for size, marker in marker_mapping.items():
-        fig.add_trace(go.Scatter(
-            x=[None],
-            y=[None],
-            mode='markers',
-            marker=dict(symbol=marker, size=10, color=gray_color),  # Set the marker color to gray
-            name=f"Company Size: {size_mapping[size]}",
-            legendgroup='size'
-        ))
 
     # Add custom entries to the legend for country colors
     for country, color in color_map.items():
